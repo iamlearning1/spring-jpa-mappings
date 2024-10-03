@@ -12,7 +12,7 @@ data class Instructor(
     val lastName: String,
     val email: String,
 
-//    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
-//    @JoinColumn(name = "instructor_detail_id", referencedColumnName = "id")
-//    val instructorDetail: InstructorDetail
+    @OneToOne(cascade = [CascadeType.ALL])
+    @JoinColumn(name = "instructor_detail_id", referencedColumnName = "id")
+    val instructorDetail: InstructorDetail
 )

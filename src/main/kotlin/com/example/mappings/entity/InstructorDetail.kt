@@ -10,8 +10,6 @@ data class InstructorDetail(
     val id: Long,
     val youtubeChannel: String,
     val hobby: String,
-
-    @OneToOne(cascade = [CascadeType.ALL])
-    @JoinColumn(name="instructor_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "instructorDetail")
     val instructor: Instructor
 )
