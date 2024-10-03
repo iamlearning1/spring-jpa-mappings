@@ -9,5 +9,9 @@ data class InstructorDetail(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long,
     val youtubeChannel: String,
-    val hobby: String
+    val hobby: String,
+
+    @OneToOne(cascade = [CascadeType.ALL])
+    @JoinColumn(name="instructor_id", referencedColumnName = "id")
+    val instructor: Instructor
 )
