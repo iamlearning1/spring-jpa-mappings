@@ -12,7 +12,7 @@ data class Instructor(
     val lastName: String,
     val email: String,
 
-    @OneToOne(cascade = [CascadeType.ALL])
+    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_detail_id", referencedColumnName = "id")
     val instructorDetail: InstructorDetail,
 
@@ -21,6 +21,6 @@ data class Instructor(
         CascadeType.MERGE,
         CascadeType.PERSIST,
         CascadeType.REFRESH
-    ], mappedBy = "instructor")
+    ], mappedBy = "instructor", fetch = FetchType.LAZY)
     val courses: List<Course> = emptyList(),
 )

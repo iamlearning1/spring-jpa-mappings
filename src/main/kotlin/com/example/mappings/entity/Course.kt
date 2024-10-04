@@ -15,11 +15,14 @@ data class Course(
         CascadeType.MERGE,
         CascadeType.PERSIST,
         CascadeType.REFRESH
-    ])
+    ], fetch = FetchType.LAZY)
     @JoinColumn(
         name = "instructor_id",
         nullable = false,
         referencedColumnName = "id"
     )
-    val instructor: Instructor
+    val instructor: Instructor,
+
+    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY, mappedBy = "course")
+    val reviews: List<Review> = emptyList(),
 )

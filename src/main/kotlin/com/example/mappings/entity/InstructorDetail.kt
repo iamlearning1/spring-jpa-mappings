@@ -10,6 +10,6 @@ data class InstructorDetail(
     val id: Long,
     val youtubeChannel: String,
     val hobby: String,
-    @OneToOne(mappedBy = "instructorDetail")
+    @OneToOne(mappedBy = "instructorDetail", fetch = FetchType.LAZY)
     val instructor: Instructor
 )
