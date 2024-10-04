@@ -14,5 +14,13 @@ data class Instructor(
 
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "instructor_detail_id", referencedColumnName = "id")
-    val instructorDetail: InstructorDetail
+    val instructorDetail: InstructorDetail,
+
+    @OneToMany(cascade = [
+        CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.PERSIST,
+        CascadeType.REFRESH
+    ], mappedBy = "instructor")
+    val courses: List<Course> = emptyList(),
 )
