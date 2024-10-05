@@ -25,4 +25,17 @@ data class Course(
 
     @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY, mappedBy = "course")
     val reviews: List<Review> = emptyList(),
+
+    @ManyToMany(cascade = [
+        CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.PERSIST,
+        CascadeType.REFRESH
+    ], fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "courses_taken",
+        joinColumns = [JoinColumn(name = "course_id")],
+        inverseJoinColumns = [JoinColumn(name = "student_id")]
+    )
+    val students: List<Student> = emptyList(),
 )
